@@ -12,9 +12,9 @@ const PORT = process.env.PORT || 5000;
 
 // ── Middleware ──────────────────────────────────────────────
 app.use(cors({
-  origin: "*",
+  origin: ["http://localhost:5173", "http://localhost:3000"],
   methods: ["GET", "POST"],
-  allowedHeaders: ["Content-Type"],
+  credentials: true,
 }));
 
 app.use(express.json());
@@ -34,4 +34,6 @@ app.use((err, req, res, next) => {
 });
 
 // ── Start ───────────────────────────────────────────────────
-app.listen(PORT, () => console.log(`Server running on ${PORT}`));
+app.listen(PORT, () => {
+  console.log(`✅ Server is running on http://localhost:${PORT}`);
+});
